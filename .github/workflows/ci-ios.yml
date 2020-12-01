@@ -1,13 +1,13 @@
-name: iOS SDK Utils MacMini CI
+name: D4L Utils CI
 
 on:
   push:
     branches:
-      - master
+      - main
 
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
