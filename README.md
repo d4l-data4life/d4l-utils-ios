@@ -1,7 +1,7 @@
 # hc-sdk-util-ios
 Utilities library for iOS SDK projects
 
-(https://codecov.io/gh/gesundheitscloud/hc-sdk-util-ios) [![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.2.3-blue.svg)](https://github.com/CocoaPods/CocoaPods) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.2.3-blue.svg)](https://github.com/CocoaPods/CocoaPods) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Usage
 ### Requirements
