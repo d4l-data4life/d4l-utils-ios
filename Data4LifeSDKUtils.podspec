@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
 
   s.source_files     = 'Sources/SDKUtils/Source/**/*.{swift,h,m}'
 
-  s.dependency 'CryptoSwift', '1.3.2'
+  s.dependency 'CryptoSwift', '1.3.7'
 end
