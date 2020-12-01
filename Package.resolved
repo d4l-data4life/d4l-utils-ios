@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CryptoSwift",
+        "repositoryURL": "git@github.com:gesundheitscloud/CryptoSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "8e58185bb4e68fcb9367cd39ba150c2938c3afc5",
+          "version": "1.3.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
