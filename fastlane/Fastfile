@@ -1,7 +1,7 @@
 default_platform :ios
 
 project = "Data4LifeSDKUtils"
-repository = "d4l-data4life/d4l-utils-ios.git"
+repository = "d4l-data4life/d4l-utils-ios"
 framework_binary_path = "build/" + project + ".framework.zip"
 podspec_path = '../Data4LifeSDKUtils.podspec'
 private_podspec_repo_name = 'd4l-data4life'
