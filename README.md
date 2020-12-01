@@ -4,7 +4,7 @@ Utilities library for iOS SDK projects
 [![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.3.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg?style=flat&colorA=28a745&&colorB=4E4E4E)](https://github.com/apple/swift-package-manager)
-[![License](https://img.shields.io/badge/license-PRIVATE-blue.svg)](https://github.com/d4l-data4life/d4l-utils-ios/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-PRIVATE-blue.svg)](https://github.com/d4l-data4life/d4l-utils-ios/blob/main/LICENSE)
 
 ## Usage
 ### Requirements

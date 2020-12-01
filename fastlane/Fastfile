@@ -30,7 +30,7 @@ platform :ios do
   desc " * **`api_token`** (required): Github API token"
   desc " * **`allow_dirty_branch`**: Allows the git branch to be dirty before continuing. Defaults to false"
   desc " * **`remote`**: The name of the git remote. Defaults to `origin`. (`DEPLOY_REMOTE`)"
-  desc " * **`allow_branch`**: The name of the branch to build from. Defaults to `master`. (`DEPLOY_BRANCH`)"
+  desc " * **`allow_branch`**: The name of the branch to build from. Defaults to `main`. (`DEPLOY_BRANCH`)"
   desc " * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false"
   desc " * **`is_prerelease`**: Marks GitHub release as Pre-release. Defaults to false"
   lane :release_framework do | options |
