@@ -4,8 +4,8 @@ project = "Data4LifeSDKUtils"
 repository = "d4l-data4life/d4l-utils-ios.git"
 framework_binary_path = "build/" + project + ".framework.zip"
 podspec_path = '../Data4LifeSDKUtils.podspec'
-private_podspec_repo_name = 'gesundheitscloud'
-private_podspect_repo_url = 'git@github.com:gesundheitscloud/cocoapods-specs'
+private_podspec_repo_name = 'd4l-data4life'
+private_podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
 device = "iPhone 11 (14.0)"
 
 platform :ios do
