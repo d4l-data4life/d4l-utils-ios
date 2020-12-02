@@ -15,6 +15,37 @@ Utilities library for iOS SDK projects
 ## Management
 SDK is handled by [Fastlane](https://fastlane.tools/) and all of the available functions are available in the [README](fastlane/README.md).
 
+## Installation
+
+#### CocoaPods
+
+You can use [CocoaPods](https://cocoapods.org/).
+
+```ruby
+pod 'Data4LifeSDKUtils', '~> 0.3.0'
+```
+
+#### Carthage
+
+You can use [Carthage](https://github.com/Carthage/Carthage).
+Specify in Cartfile:
+
+```ruby
+github "d4l-data4life/d4l-utils-ios"
+```
+
+Run `carthage` to build the framework and drag the built Data4LifeSDK.framework into your Xcode project. Follow [build instructions](https://github.com/Carthage/Carthage#getting-started).
+
+#### Swift Package Manager
+
+You can use [Swift Package Manager](https://swift.org/package-manager/) and specify dependency in `Package.swift` by adding this:
+
+```swift
+.package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.3.0"))
+```
+
+## Building
+
 ### Install Fastlane and other dependencies using Bundler
 
 ```sh
