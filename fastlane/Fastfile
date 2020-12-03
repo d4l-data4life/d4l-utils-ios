@@ -1,11 +1,11 @@
 default_platform :ios
 
 project = "Data4LifeSDKUtils"
-repository = "d4l-data4life/d4l-utils-ios.git"
+repository = "d4l-data4life/d4l-utils-ios"
 framework_binary_path = "build/" + project + ".framework.zip"
 podspec_path = '../Data4LifeSDKUtils.podspec'
-private_podspec_repo_name = 'gesundheitscloud'
-private_podspect_repo_url = 'git@github.com:gesundheitscloud/cocoapods-specs'
+private_podspec_repo_name = 'd4l-data4life'
+private_podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
 device = "iPhone 11 (14.0)"
 
 platform :ios do
@@ -30,7 +30,7 @@ platform :ios do
   desc " * **`api_token`** (required): Github API token"
   desc " * **`allow_dirty_branch`**: Allows the git branch to be dirty before continuing. Defaults to false"
   desc " * **`remote`**: The name of the git remote. Defaults to `origin`. (`DEPLOY_REMOTE`)"
-  desc " * **`allow_branch`**: The name of the branch to build from. Defaults to `master`. (`DEPLOY_BRANCH`)"
+  desc " * **`allow_branch`**: The name of the branch to build from. Defaults to `main`. (`DEPLOY_BRANCH`)"
   desc " * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false"
   desc " * **`is_prerelease`**: Marks GitHub release as Pre-release. Defaults to false"
   lane :release_framework do | options |

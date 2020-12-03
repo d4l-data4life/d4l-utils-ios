@@ -14,7 +14,7 @@ let package = Package(
             targets: ["Data4LifeSDKUtils"]),
     ],
     dependencies: [
-        .package(url: "git@github.com:gesundheitscloud/CryptoSwift.git", from: "1.3.3"),
+        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.3.7"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
