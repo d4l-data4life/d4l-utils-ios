@@ -19,7 +19,7 @@ SDK is handled by [Fastlane](https://fastlane.tools/) and all of the available f
 
 #### CocoaPods
 
-You can use [CocoaPods](https://cocoapods.org/).
+To install with [CocoaPods](https://cocoapods.org/) add the following line to the podfile.
 
 ```ruby
 pod 'Data4LifeSDKUtils', '~> 0.3.0'
@@ -27,18 +27,17 @@ pod 'Data4LifeSDKUtils', '~> 0.3.0'
 
 #### Carthage
 
-You can use [Carthage](https://github.com/Carthage/Carthage).
-Specify in Cartfile:
+To install with [Carthage](https://github.com/Carthage/Carthage) add the following line to the Cartfile:
 
 ```ruby
 github "d4l-data4life/d4l-utils-ios"
 ```
 
-Run `carthage` to build the framework and drag the built Data4LifeSDK.framework into your Xcode project. Follow [build instructions](https://github.com/Carthage/Carthage#getting-started).
+Run `carthage` to build the framework and drag the built `Data4LifeSDK.framework` into your Xcode project. Follow [build instructions](https://github.com/Carthage/Carthage#getting-started).
 
 #### Swift Package Manager
 
-You can use [Swift Package Manager](https://swift.org/package-manager/) and specify dependency in `Package.swift` by adding this:
+To install with [Swift Package Manager](https://swift.org/package-manager/) add this package as a dependency in `Package.swift`:
 
 ```swift
 .package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.3.0"))
