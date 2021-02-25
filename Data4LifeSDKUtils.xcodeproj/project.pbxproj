@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		363E7B6C25E7F26F0052A3A8 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363E7B6B25E7F26F0052A3A8 /* CryptoSwift.xcframework */; };
+		363E7B7825E7F6230052A3A8 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363E7B6B25E7F26F0052A3A8 /* CryptoSwift.xcframework */; };
 		3658B99623CF1EF200F0813F /* Data4LifeSDKUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3658B98C23CF1EF200F0813F /* Data4LifeSDKUtils.framework */; };
 		3658B99B23CF1EF200F0813F /* MIMETypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3658B99A23CF1EF200F0813F /* MIMETypeTests.swift */; };
 		3658B99D23CF1EF200F0813F /* SDKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3658B98F23CF1EF200F0813F /* SDKUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				363E7B6C25E7F26F0052A3A8 /* CryptoSwift.xcframework in Frameworks */,
+				363E7B7825E7F6230052A3A8 /* CryptoSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,7 +472,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.SDKUtils;
 				PRODUCT_NAME = Data4LifeSDKUtils;
 				SKIP_INSTALL = YES;
@@ -507,7 +507,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.SDKUtils;
 				PRODUCT_NAME = Data4LifeSDKUtils;
 				SKIP_INSTALL = YES;
