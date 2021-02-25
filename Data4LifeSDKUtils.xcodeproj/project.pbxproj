@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		364E440F25E7E761006B063C /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 364E440E25E7E761006B063C /* CryptoSwift.xcframework */; };
 		3658B99623CF1EF200F0813F /* Data4LifeSDKUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3658B98C23CF1EF200F0813F /* Data4LifeSDKUtils.framework */; };
 		3658B99B23CF1EF200F0813F /* MIMETypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3658B99A23CF1EF200F0813F /* MIMETypeTests.swift */; };
 		3658B99D23CF1EF200F0813F /* SDKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3658B98F23CF1EF200F0813F /* SDKUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,7 +24,6 @@
 		3659B89923D60C4D009970DA /* DataValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3659B89723D60C0E009970DA /* DataValidatorTests.swift */; };
 		3659BC9823D84B05009970DA /* Data+Cryptography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3659BC9723D84B05009970DA /* Data+Cryptography.swift */; };
 		3659BC9A23D84BCF009970DA /* DataCryptographyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3659BC9923D84BCF009970DA /* DataCryptographyTests.swift */; };
-		36E7F3A22552E4EB00CF9A5D /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E7F3A12552E4EB00CF9A5D /* CryptoSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		364E440E25E7E761006B063C /* CryptoSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoSwift.xcframework; path = xcframeworks/CryptoSwift.xcframework; sourceTree = "<group>"; };
 		3658B98C23CF1EF200F0813F /* Data4LifeSDKUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data4LifeSDKUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3658B98F23CF1EF200F0813F /* SDKUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDKUtils.h; sourceTree = "<group>"; };
 		3658B99023CF1EF200F0813F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		3659B89723D60C0E009970DA /* DataValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidatorTests.swift; sourceTree = "<group>"; };
 		3659BC9723D84B05009970DA /* Data+Cryptography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Cryptography.swift"; sourceTree = "<group>"; };
 		3659BC9923D84BCF009970DA /* DataCryptographyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCryptographyTests.swift; sourceTree = "<group>"; };
-		36E7F3A12552E4EB00CF9A5D /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36E7F3A22552E4EB00CF9A5D /* CryptoSwift.framework in Frameworks */,
+				364E440F25E7E761006B063C /* CryptoSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +156,7 @@
 		3659BC8D23D848AE009970DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				36E7F3A12552E4EB00CF9A5D /* CryptoSwift.framework */,
+				364E440E25E7E761006B063C /* CryptoSwift.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -218,7 +218,6 @@
 				3658B99123CF1EF200F0813F /* Sources */,
 				3658B99223CF1EF200F0813F /* Frameworks */,
 				3658B99323CF1EF200F0813F /* Resources */,
-				36E7F3A92552E5E600CF9A5D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -292,27 +291,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		36E7F3A92552E5E600CF9A5D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3658B98823CF1EF200F0813F /* Sources */ = {
@@ -474,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -508,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
