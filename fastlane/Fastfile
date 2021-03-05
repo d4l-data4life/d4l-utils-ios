@@ -125,6 +125,22 @@ platform :ios do
     end
   end
 
+  desc "Build xcframework for distribution"
+  lane :archive_xcframework do
+    create_xcframework(
+      project: "#{project}.xcodeproj",
+      scheme: 'Data4LifeSDKUtils',
+      destinations: ['iOS'],
+      xcframework_output_directory: 'xcframeworks',
+      remove_xcarchives: true,
+      include_debug_symbols: true,
+      include_dSYMs: true,
+      include_BCSymbolMaps: true,
+      enable_bitcode: true,
+      product_name: 'Data4LifeSDKUtils'
+    )
+  end
+
   desc "Update AppStore and utils version number in project plists"
   lane :update_plist_versions do |options|
     if options[:sdk_version] == nil

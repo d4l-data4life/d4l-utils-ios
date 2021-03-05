@@ -12,7 +12,7 @@ Install _fastlane_ using
 ```
 [sudo] gem install fastlane -NV
 ```
-or alternatively using `brew cask install fastlane`
+or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
@@ -37,7 +37,7 @@ Package and release framework
 
  * **`remote`**: The name of the git remote. Defaults to `origin`. (`DEPLOY_REMOTE`)
 
- * **`allow_branch`**: The name of the branch to build from. Defaults to `master`. (`DEPLOY_BRANCH`)
+ * **`allow_branch`**: The name of the branch to build from. Defaults to `main`. (`DEPLOY_BRANCH`)
 
  * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false
 
@@ -47,6 +47,11 @@ Package and release framework
 fastlane ios build_framework_binary
 ```
 Build universal binary
+### ios archive_xcframework
+```
+fastlane ios archive_xcframework
+```
+Build xcframework for distribution
 ### ios update_plist_versions
 ```
 fastlane ios update_plist_versions
