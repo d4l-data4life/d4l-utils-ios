@@ -47,9 +47,9 @@ Package and release framework
 fastlane ios build_framework_binary
 ```
 Build universal binary
-### ios archive_xcframework
+### ios build_xcframework
 ```
-fastlane ios archive_xcframework
+fastlane ios build_xcframework
 ```
 Build xcframework for distribution
 ### ios update_plist_versions

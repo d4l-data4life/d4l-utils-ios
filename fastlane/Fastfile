@@ -1,6 +1,7 @@
 default_platform :ios
 
 project = "Data4LifeSDKUtils"
+scheme = "Data4LifeSDKUtils"
 repository = "d4l-data4life/d4l-utils-ios"
 framework_binary_path = "build/" + project + ".framework.zip"
 podspec_path = '../Data4LifeSDKUtils.podspec'
@@ -126,19 +127,21 @@ platform :ios do
   end
 
   desc "Build xcframework for distribution"
-  lane :archive_xcframework do
-    create_xcframework(
-      project: "#{project}.xcodeproj",
-      scheme: 'Data4LifeSDKUtils',
-      destinations: ['iOS'],
-      xcframework_output_directory: 'xcframeworks',
-      remove_xcarchives: true,
-      include_debug_symbols: true,
-      include_dSYMs: true,
-      include_BCSymbolMaps: true,
-      enable_bitcode: true,
-      product_name: 'Data4LifeSDKUtils'
-    )
+  lane :build_xcframework do
+    Dir.chdir("..") do
+      xcFrameworkPath = "xcframeworks/#{project}.xcframework"
+      buildPath = "build"
+      sh "rm -rf #{buildPath}"
+      sh "xcodebuild archive -scheme #{scheme} -archivePath #{buildPath}/Release/#{project}-iphonesimulator.xcarchive -sdk iphonesimulator SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{scheme} -archivePath #{buildPath}/Release/#{project}-iphoneos.xcarchive -sdk iphoneos SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{scheme} -archivePath #{buildPath}/Release/#{project}-macosx.xcarchive -sdk macosx SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{scheme} -archivePath #{buildPath}/Release/#{project}-watchos.xcarchive -sdk watchos SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild -create-xcframework \
+          -framework #{buildPath}/Release/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -framework #{buildPath}/Release/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -framework #{buildPath}/Release/#{project}-watchos.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -output #{xcFrameworkPath}"
+    end
   end
 
   desc "Update AppStore and utils version number in project plists"
