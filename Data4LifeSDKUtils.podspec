@@ -11,8 +11,6 @@ Pod::Spec.new do |s|
   s.platform         = :ios, '12.0'
   s.requires_arc     = true
 
-  s.source_files     = 'Sources/SDKUtils/Source/**/*.{swift,h,m}'
-  s.vendored_frameworks = 'xcframeworks/Data4LifeSDKUtils.xcframework'
+  s.vendored_frameworks = 'xcframeworks/Data4LifeSDKUtils.xcframework', 'xcframeworks/CryptoSwift.xcframework'
 
-  s.dependency 'CryptoSwift', '1.3.7'
 end

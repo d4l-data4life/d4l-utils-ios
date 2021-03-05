@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		363E7B7825E7F6230052A3A8 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363E7B6B25E7F26F0052A3A8 /* CryptoSwift.xcframework */; };
+		3612D37B25F234FE00D0F75B /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3612D37A25F234FE00D0F75B /* CryptoSwift.xcframework */; };
 		3658B99623CF1EF200F0813F /* Data4LifeSDKUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3658B98C23CF1EF200F0813F /* Data4LifeSDKUtils.framework */; };
 		3658B99B23CF1EF200F0813F /* MIMETypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3658B99A23CF1EF200F0813F /* MIMETypeTests.swift */; };
 		3658B99D23CF1EF200F0813F /* SDKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3658B98F23CF1EF200F0813F /* SDKUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		363E7B6B25E7F26F0052A3A8 /* CryptoSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoSwift.xcframework; path = Carthage/Build/CryptoSwift.xcframework; sourceTree = "<group>"; };
+		3612D37A25F234FE00D0F75B /* CryptoSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CryptoSwift.xcframework; path = xcframeworks/CryptoSwift.xcframework; sourceTree = "<group>"; };
 		3658B98C23CF1EF200F0813F /* Data4LifeSDKUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data4LifeSDKUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3658B98F23CF1EF200F0813F /* SDKUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDKUtils.h; sourceTree = "<group>"; };
 		3658B99023CF1EF200F0813F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				363E7B7825E7F6230052A3A8 /* CryptoSwift.xcframework in Frameworks */,
+				3612D37B25F234FE00D0F75B /* CryptoSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +156,7 @@
 		3659BC8D23D848AE009970DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				363E7B6B25E7F26F0052A3A8 /* CryptoSwift.xcframework */,
+				3612D37A25F234FE00D0F75B /* CryptoSwift.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
