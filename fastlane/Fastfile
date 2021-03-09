@@ -129,17 +129,22 @@ platform :ios do
   desc "Build xcframework for distribution"
   lane :build_xcframework do
     Dir.chdir("..") do
+      root = Dir.pwd
       xcFrameworkPath = "xcframeworks/#{project}.xcframework"
+      configuration = "Release"
       buildPath = "build"
       sh "rm -rf #{buildPath}"
-      sh "xcodebuild archive -scheme #{scheme} -archivePath #{buildPath}/Release/#{project}-iphonesimulator.xcarchive -sdk iphonesimulator SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      sh "xcodebuild archive -scheme #{scheme} -archivePath #{buildPath}/Release/#{project}-iphoneos.xcarchive -sdk iphoneos SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      sh "xcodebuild archive -scheme #{scheme} -archivePath #{buildPath}/Release/#{project}-macosx.xcarchive -sdk macosx SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      sh "xcodebuild archive -scheme #{scheme} -archivePath #{buildPath}/Release/#{project}-watchos.xcarchive -sdk watchos SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "rm -rf #{xcFrameworkPath}"
+      sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+
+      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/").first()
       sh "xcodebuild -create-xcframework \
-          -framework #{buildPath}/Release/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
-          -framework #{buildPath}/Release/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
-          -framework #{buildPath}/Release/#{project}-watchos.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -framework #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/dSYMs/#{project}.framework.dSYM' \
+          -framework #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/dSYMs/#{project}.framework.dSYM' \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
           -output #{xcFrameworkPath}"
     end
   end
