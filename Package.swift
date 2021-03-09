@@ -28,7 +28,14 @@ let package = Package(
             name: "Data4LifeSDKUtilsTests",
             dependencies: ["Data4LifeSDKUtils"],
             path: "Tests",
-            exclude: ["SDKUtilsTests/Info.plist"],
+            exclude: [
+                "SDKUtilsTests/Info.plist",
+                "build",
+                "fastlane",
+                "vendor",
+                "Gemfile",
+                "Gemfile.lock"
+            ],
             resources: [
                 .copy("SDKUtilsTests/Resources/Data Samples/sample-jfif.jpg"),
                 .copy("SDKUtilsTests/Resources/Data Samples/sample.dcm"),
