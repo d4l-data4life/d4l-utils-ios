@@ -11,6 +11,8 @@ let package = Package(
         .library(
             name: "Data4LifeSDKUtils",
             targets: ["Data4LifeSDKUtils", "CryptoSwift"]),
+        .library(name: "CryptoSwift",
+                 targets: ["CryptoSwift"]),
     ],
     targets: [
         .binaryTarget(
