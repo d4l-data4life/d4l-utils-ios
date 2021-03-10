@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
 
   s.platform         = :ios, '12.0'
   s.requires_arc     = true
-  s.source_files     = 'xcframeworks/*.xcframework.zip'
+  s.source           = { :http => 'https://github.com/d4l-data4life/d4l-utils-ios/raw/feature/SDK-544/prepare-for-xcframeworks/xcframeworks/CryptoSwift.xcframework.zip' }
 
-  s.vendored_frameworks = 'xcframeworks/Data4LifeSDKUtils.xcframework', 'xcframeworks/CryptoSwift.xcframework'
+  s.vendored_frameworks = 'CryptoSwift.xcframework'
 
 end
