@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
 
   s.platform         = :ios, '12.0'
   s.requires_arc     = true
+  s.source_files     = 'xcframeworks/*.xcframework.zip'
 
   s.vendored_frameworks = 'xcframeworks/Data4LifeSDKUtils.xcframework', 'xcframeworks/CryptoSwift.xcframework'
 

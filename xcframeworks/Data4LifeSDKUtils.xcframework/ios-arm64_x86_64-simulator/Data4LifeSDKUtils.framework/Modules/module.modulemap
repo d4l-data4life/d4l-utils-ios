@@ -1,4 +1,0 @@
-framework module Data4LifeSDKUtils {
-  header "Data4LifeSDKUtils-Swift.h"
-  requires objc
-}
