@@ -10,7 +10,6 @@ xcuserdata/
 *.xccheckout
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
-build/
 DerivedData/
 *.moved-aside
 *.pbxuser
@@ -24,14 +23,10 @@ DerivedData/
 vendor
 .swiftpm
 Carthage
+xcbuild/
 
 ## Obj-C/Swift specific
 *.hmap
-
-## App packaging
-*.ipa
-*.dSYM.zip
-*.dSYM
 
 ## Playgrounds
 timeline.xctimeline
