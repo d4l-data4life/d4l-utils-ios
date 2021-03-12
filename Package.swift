@@ -17,12 +17,14 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(
-            name: "CryptoSwift",
-            path: "xcframeworks/CryptoSwift.xcframework"
+          name: "CryptoSwift",
+          url: "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/0.4.0/Data4LifeSDKUtils-xcframeworks-0.4.0.zip",
+          checksum: "5ae14a7f2ea9257a3cf64d93c155dd1abc91fce84337156b082bf2f69bd0d6ab"
         ),
         .binaryTarget(
             name: "Data4LifeSDKUtils",
-            path: "xcframeworks/Data4LifeSDKUtils.xcframework"
+            url: "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/0.4.0/Data4LifeSDKUtils-xcframeworks-0.4.0.zip",
+            checksum: "5ae14a7f2ea9257a3cf64d93c155dd1abc91fce84337156b082bf2f69bd0d6ab"
         ),
         .testTarget(
             name: "Data4LifeSDKUtilsTests",
