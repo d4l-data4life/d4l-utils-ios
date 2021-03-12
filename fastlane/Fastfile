@@ -143,7 +143,7 @@ platform :ios do
           -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
           -output #{xcFrameworkPath}"
 
-      sh "zip Data4LifeSDKUtils-xcframeworks-#{options[:version]}.zip #{xcFrameworkPath} #{cryptoSwiftPath}"
+      sh "zip -r Data4LifeSDKUtils-xcframeworks-#{options[:version]}.zip #{xcFrameworkPath} #{cryptoSwiftPath}"
       sh "rm -rf #{xcFrameworkPath}"
     end
   end
@@ -180,7 +180,7 @@ platform :ios do
       tag_name: options[:version],
       description: changelog,
       is_prerelease: isPrerelease,
-      upload_assets: [asset]
+      upload_assets: [options[:asset]]
     )
   end
 
