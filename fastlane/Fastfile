@@ -117,20 +117,16 @@ platform :ios do
     end
   end
 
-  desc "Build universal binary"
-  lane :build_framework_binary do
-    Dir.chdir("..") do
-      sh "rm -rf ./build"
-      sh "./wcarthage.sh build --platform ios --no-skip-current --cache-builds --configuration Release"
-      sh "./wcarthage.sh archive --output #{framework_binary_path}"
-    end
-  end
-
   desc "Build xcframework for distribution"
-  lane :build_xcframework do
+  lane :build_xcframework do |options|
+    if options[:version] == nil
+        raise "Missing release version".red
+    end
+
     Dir.chdir("..") do
       root = Dir.pwd
-      xcFrameworkPath = "xcframeworks/#{project}.xcframework"
+      xcFrameworkPath = "#{project}.xcframework"
+      cryptoSwiftPath = "CryptoSwift.xcframework"
       configuration = "Release"
       buildPath = "xcbuild"
       sh "rm -rf #{buildPath}"
@@ -146,7 +142,46 @@ platform :ios do
           -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/dSYMs/#{project}.framework.dSYM' \
           -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
           -output #{xcFrameworkPath}"
+
+      sh "zip Data4LifeSDKUtils-xcframeworks-#{options[:version]}.zip #{xcFrameworkPath} #{cryptoSwiftPath}"
+      sh "rm -rf #{xcFrameworkPath}"
     end
+  end
+
+  desc "Upload to a github release"
+  lane :gh_release do |options|
+
+    if options[:version] == nil
+        raise "Missing release version".red
+    end
+
+    if options[:api_token] == nil
+        raise "Missing api token".red
+    end
+
+    if options[:asset] == nil
+        raise "Missing asset".red
+    end
+
+    isPrerelease = options[:is_prerelease]
+    if isPrerelease == nil
+        isPrerelease = true
+    end
+
+    changelog = options[:changelog]
+    if changelog == nil
+       changelog = "Pre-release"
+    end
+
+    set_github_release(
+      repository_name: repository,
+      api_token: options[:api_token],
+      name: "#{options[:version]}",
+      tag_name: options[:version],
+      description: changelog,
+      is_prerelease: isPrerelease,
+      upload_assets: [asset]
+    )
   end
 
   desc "Update AppStore and utils version number in project plists"

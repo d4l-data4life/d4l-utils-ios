@@ -42,16 +42,16 @@ Package and release framework
  * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false
 
  * **`is_prerelease`**: Marks GitHub release as Pre-release. Defaults to false
-### ios build_framework_binary
-```
-fastlane ios build_framework_binary
-```
-Build universal binary
 ### ios build_xcframework
 ```
 fastlane ios build_xcframework
 ```
 Build xcframework for distribution
+### ios gh_release
+```
+fastlane ios gh_release
+```
+Upload to a github release
 ### ios update_plist_versions
 ```
 fastlane ios update_plist_versions
