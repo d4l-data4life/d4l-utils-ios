@@ -161,7 +161,15 @@ platform :ios do
         raise "Missing api token".red
     end
 
-    if options[:asset] == nil
+    if options[:asset1] == nil
+        raise "Missing asset".red
+    end
+
+    if options[:asset2] == nil
+        raise "Missing asset".red
+    end
+
+    if options[:asset3] == nil
         raise "Missing asset".red
     end
 
@@ -182,7 +190,7 @@ platform :ios do
       tag_name: options[:version],
       description: changelog,
       is_prerelease: isPrerelease,
-      upload_assets: [options[:asset]]
+      upload_assets: [options[:asset1], options[:asset2], options[:asset3]]
     )
   end
 
