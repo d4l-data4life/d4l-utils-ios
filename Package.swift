@@ -19,12 +19,12 @@ let package = Package(
         .binaryTarget(
           name: "CryptoSwift",
           url: "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/0.4.0/CryptoSwift-xcframework-0.4.0.zip",
-          checksum: "068b3a650c09ebf71cc1f7a2dff6a8f5d3d683cd59a355edc1ec0a3843c082fc"
+          checksum: "8e56c17c8b627e91478f347a11b6e0f9ec0fb8f590dd25034117d09d8c52af63"
         ),
         .binaryTarget(
             name: "Data4LifeSDKUtils",
             url: "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/0.4.0/Data4LifeSDKUtils-xcframework-0.4.0.zip",
-            checksum: "ccd9a642b4103819ba7663650655429ff3438671b4c0d9ee7a8b0c3e25d83ea0"
+            checksum: "5d5a1ce6a8bfc39549d682ec48ceca0ac5d7c2816ad6656da238110ef28c679c"
         ),
         .testTarget(
             name: "Data4LifeSDKUtilsTests",

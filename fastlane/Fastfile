@@ -129,8 +129,21 @@ platform :ios do
       cryptoSwiftPath = "CryptoSwift.xcframework"
       configuration = "Release"
       buildPath = "xcbuild"
-      sh "rm -rf #{buildPath}"
-      sh "rm -rf #{xcFrameworkPath}"
+      if File.exist?(buildPath)
+        sh "rm -rf #{buildPath}"
+      end
+      if File.exist?(xcFrameworkPath)
+        sh "rm -rf #{xcFrameworkPath}"
+      end
+    if File.exist?("XCFrameworks-#{options[:version]}.zip")
+      sh "rm XCFrameworks-#{options[:version]}.zip"
+    end
+    if File.exist?("Data4LifeSDKUtils-xcframework-#{options[:version]}.zip")
+      sh "rm Data4LifeSDKUtils-xcframework-#{options[:version]}.zip"
+    end
+    if File.exist?("Cryptoswift-xcframework-#{options[:version]}.zip")
+      sh "rm Cryptoswift-xcframework-#{options[:version]}.zip"
+    end
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
 
@@ -144,8 +157,8 @@ platform :ios do
           -output #{xcFrameworkPath}"
 
       sh "zip -r XCFrameworks-#{options[:version]}.zip #{xcFrameworkPath} #{cryptoSwiftPath} LICENSE"
-      sh "zip -r Data4LifeSDKUtils-xcframework-#{options[:version]}.zip #{xcFrameworkPath} LICENSE"
-      sh "zip -r Cryptoswift-xcframework-#{options[:version]}.zip #{cryptoSwiftPath} LICENSE"
+      sh "zip -r Data4LifeSDKUtils-xcframework-#{options[:version]}.zip #{xcFrameworkPath}"
+      sh "zip -r Cryptoswift-xcframework-#{options[:version]}.zip #{cryptoSwiftPath}"
       sh "rm -rf #{xcFrameworkPath}"
     end
   end

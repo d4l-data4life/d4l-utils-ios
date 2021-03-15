@@ -23,8 +23,9 @@ DerivedData/
 vendor
 .swiftpm
 xcbuild/
-Data4LifeSDKUtils-xcframeworks*
-
+Cryptoswift-xcframework*
+Data4LifeSDKUtils-xcframework*
+XCFrameworks-*
 ## Obj-C/Swift specific
 *.hmap
 
