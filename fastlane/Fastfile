@@ -115,6 +115,9 @@ platform :ios do
         asset3: archiveCryptoPath
       )
 
+      update_podspec_version
+      push_podspec
+
     else
       Helper.log.info "When finished, commit your changes.".red
     end
@@ -151,7 +154,7 @@ platform :ios do
       if File.exist?(archiveCryptoPath)
         sh "rm #{archiveCryptoPath}"
       end
-      
+
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
 
