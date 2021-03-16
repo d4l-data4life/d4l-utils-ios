@@ -142,15 +142,16 @@ platform :ios do
       if File.exist?(xcFrameworkPath)
         sh "rm -rf #{xcFrameworkPath}"
       end
-    if File.exist?(archiveAllFrameworksPath)
-      sh "rm #{archiveAllFrameworksPath}"
-    end
-    if File.exist?(archiveUtilsPath)
-      sh "rm #{archiveUtilsPath}"
-    end
-    if File.exist?(archiveCryptoPath)
-      sh "rm #{archiveCryptoPath}"
-    end
+      if File.exist?(archiveAllFrameworksPath)
+        sh "rm #{archiveAllFrameworksPath}"
+      end
+      if File.exist?(archiveUtilsPath)
+        sh "rm #{archiveUtilsPath}"
+      end
+      if File.exist?(archiveCryptoPath)
+        sh "rm #{archiveCryptoPath}"
+      end
+      
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
 
