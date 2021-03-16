@@ -26,6 +26,7 @@ xcbuild/
 Cryptoswift-xcframework*
 Data4LifeSDKUtils-xcframework*
 XCFrameworks-*
+
 ## Obj-C/Swift specific
 *.hmap
 

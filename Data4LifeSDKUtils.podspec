@@ -9,6 +9,10 @@ Pod::Spec.new do |s|
   s.platform         = :ios, '12.0'
   s.requires_arc     = true
   s.source           = { :http => 'https://github.com/d4l-data4life/d4l-utils-ios/releases/download/0.4.0/XCFrameworks-0.4.0.zip' }
-  s.vendored_frameworks = 'Data4LifeSDKUtils.xcframework', 'CryptoSwift.xcframework'
-
+  s.cocoapods_version = '>= 1.10.0'
+  s.default_subspec     = 'Core'
+  s.subspec 'Core' do |core|
+    core.preserve_paths      = 'Data4LifeSDKUtils.xcframework', 'CryptoSwift.xcframework', 'Data4LifeSDKUtils.dSYMs/Data4LifeSDKUtils.framework.ios-arm64.dSYM', 'Data4LifeSDKUtils.dSYMs/Data4LifeSDKUtils.framework.ios-arm64_x86_64-simulator.dSYM', 'CryptoSwift.dSYMs/CryptoSwift.framework.ios-arm64.dSYM', 'CryptoSwift.dSYMs/CryptoSwift.framework.ios-arm64_x86_64-simulator.dSYM'
+    core.vendored_frameworks = 'Data4LifeSDKUtils.xcframework', 'CryptoSwift.xcframework'
+  end
 end

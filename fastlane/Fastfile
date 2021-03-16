@@ -99,17 +99,20 @@ platform :ios do
       add_git_tag(tag: "#{version}")
       push_git_tags(tag: "#{version}")
 
-      build_framework_binary
+      build_xcframework(version: version)
+      archiveAllFrameworksPath = allXcFrameworksPath(version)
+      archiveUtilsPath = utilsXcFrameworkPath(version)
+      archiveCryptoPath = cryptoXcFrameworkPath(version)
 
       # Post new release to GitHub
-      set_github_release(
-        repository_name: repository,
-        api_token: options[:api_token],
-        name: "#{version}",
-        tag_name: version,
-        description: changelog,
+      gh_release(
+        version: version,
+        api_token:options[:api_token],
+        changelog: changelog,
         is_prerelease: is_prerelease,
-        upload_assets: [framework_binary_path]
+        asset1: archiveAllFrameworksPath,
+        asset2: archiveUtilsPath,
+        asset3: archiveCryptoPath
       )
 
     else
@@ -129,20 +132,24 @@ platform :ios do
       cryptoSwiftPath = "CryptoSwift.xcframework"
       configuration = "Release"
       buildPath = "xcbuild"
+      archiveAllFrameworksPath = allXcFrameworksPath(options[:version])
+      archiveUtilsPath = utilsXcFrameworkPath(options[:version])
+      archiveCryptoPath = cryptoXcFrameworkPath(options[:version])
+
       if File.exist?(buildPath)
         sh "rm -rf #{buildPath}"
       end
       if File.exist?(xcFrameworkPath)
         sh "rm -rf #{xcFrameworkPath}"
       end
-    if File.exist?("XCFrameworks-#{options[:version]}.zip")
-      sh "rm XCFrameworks-#{options[:version]}.zip"
+    if File.exist?(archiveAllFrameworksPath)
+      sh "rm #{archiveAllFrameworksPath}"
     end
-    if File.exist?("Data4LifeSDKUtils-xcframework-#{options[:version]}.zip")
-      sh "rm Data4LifeSDKUtils-xcframework-#{options[:version]}.zip"
+    if File.exist?(archiveUtilsPath)
+      sh "rm #{archiveUtilsPath}"
     end
-    if File.exist?("Cryptoswift-xcframework-#{options[:version]}.zip")
-      sh "rm Cryptoswift-xcframework-#{options[:version]}.zip"
+    if File.exist?(archiveCryptoPath)
+      sh "rm #{archiveCryptoPath}"
     end
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
@@ -156,9 +163,9 @@ platform :ios do
           -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
           -output #{xcFrameworkPath}"
 
-      sh "zip -r XCFrameworks-#{options[:version]}.zip #{xcFrameworkPath} #{cryptoSwiftPath} LICENSE"
-      sh "zip -r Data4LifeSDKUtils-xcframework-#{options[:version]}.zip #{xcFrameworkPath}"
-      sh "zip -r Cryptoswift-xcframework-#{options[:version]}.zip #{cryptoSwiftPath}"
+      sh "zip -r #{archiveAllFrameworksPath} #{xcFrameworkPath} #{cryptoSwiftPath} LICENSE"
+      sh "zip -r #{archiveUtilsPath} #{xcFrameworkPath}"
+      sh "zip -r #{archiveCryptoPath} #{cryptoSwiftPath}"
       sh "rm -rf #{xcFrameworkPath}"
     end
   end
@@ -313,4 +320,15 @@ platform :ios do
     File.write(readme_path, updated)
   end
 
+  def allXcFrameworksPath(version)
+     return "XCFrameworks-#{version}.zip"
+  end
+
+  def utilsXcFrameworkPath(version)
+     return "Data4LifeSDKUtils-xcframework-#{version}.zip"
+  end
+
+  def cryptoXcFrameworkPath(version)
+     return "Cryptoswift-xcframework-#{version}.zip"
+  end
 end
