@@ -5,30 +5,39 @@ import PackageDescription
 
 let package = Package(
     name: "Data4LifeSDKUtils",
-    platforms: [.iOS(.v12), .macOS(.v10_12)],
+    platforms: [.iOS(.v12)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "Data4LifeSDKUtils",
-            type: .dynamic,
             targets: ["Data4LifeSDKUtils"]),
-    ],
-    dependencies: [
-        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", from: "1.3.7"),
+        .library(
+            name: "CryptoSwift",
+            targets: ["CryptoSwift"]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
+        .binaryTarget(
+          name: "CryptoSwift",
+          url: "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/0.4.0/CryptoSwift-xcframework-0.4.0.zip",
+          checksum: "8e56c17c8b627e91478f347a11b6e0f9ec0fb8f590dd25034117d09d8c52af63"
+        ),
+        .binaryTarget(
             name: "Data4LifeSDKUtils",
-            dependencies: ["CryptoSwift"],
-            path: "Sources",
-            exclude: ["SDKUtils/Info.plist"]),
+            url: "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/0.4.0/Data4LifeSDKUtils-xcframework-0.4.0.zip",
+            checksum: "786f32269ae748db0db29fd7a951a90a16b5b6be60b9a0e7fbc8e4e4fe926897"
+        ),
         .testTarget(
             name: "Data4LifeSDKUtilsTests",
             dependencies: ["Data4LifeSDKUtils"],
             path: "Tests",
-            exclude: ["SDKUtilsTests/Info.plist"],
+            exclude: [
+                "SDKUtilsTests/Info.plist",
+                "build",
+                "fastlane",
+                "vendor",
+                "Gemfile",
+                "Gemfile.lock"
+            ],
             resources: [
                 .copy("SDKUtilsTests/Resources/Data Samples/sample-jfif.jpg"),
                 .copy("SDKUtilsTests/Resources/Data Samples/sample.dcm"),

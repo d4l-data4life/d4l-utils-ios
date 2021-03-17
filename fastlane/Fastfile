@@ -1,6 +1,7 @@
 default_platform :ios
 
 project = "Data4LifeSDKUtils"
+scheme = "Data4LifeSDKUtils"
 repository = "d4l-data4life/d4l-utils-ios"
 framework_binary_path = "build/" + project + ".framework.zip"
 podspec_path = '../Data4LifeSDKUtils.podspec'
@@ -11,9 +12,6 @@ device = "iPhone 11 (14.0)"
 platform :ios do
   desc "Run unit tests and upload code coverage"
   lane :test do
-    Dir.chdir("..") do
-       sh "./wcarthage.sh bootstrap --platform ios --cache-builds"
-    end
     scan(
       project: "Data4LifeSDKUtils.xcodeproj",
       scheme: "Data4LifeSDKUtils",
@@ -22,6 +20,9 @@ platform :ios do
       clean: true
     )
 
+    Dir.chdir("..") do
+      sh("pod spec lint")
+    end
   end
 
   desc "Package and release framework"
@@ -98,31 +99,123 @@ platform :ios do
       add_git_tag(tag: "#{version}")
       push_git_tags(tag: "#{version}")
 
-      build_framework_binary
+      build_xcframework(version: version)
+      archiveAllFrameworksPath = allXcFrameworksPath(version)
+      archiveUtilsPath = utilsXcFrameworkPath(version)
+      archiveCryptoPath = cryptoXcFrameworkPath(version)
 
       # Post new release to GitHub
-      set_github_release(
-        repository_name: repository,
-        api_token: options[:api_token],
-        name: "#{version}",
-        tag_name: version,
-        description: changelog,
+      gh_release(
+        version: version,
+        api_token:options[:api_token],
+        changelog: changelog,
         is_prerelease: is_prerelease,
-        upload_assets: [framework_binary_path]
+        asset1: archiveAllFrameworksPath,
+        asset2: archiveUtilsPath,
+        asset3: archiveCryptoPath
       )
+
+      update_podspec_version
+      push_podspec
 
     else
       Helper.log.info "When finished, commit your changes.".red
     end
   end
 
-  desc "Build universal binary"
-  lane :build_framework_binary do
-    Dir.chdir("..") do
-      sh "rm -rf ./build"
-      sh "./wcarthage.sh build --platform ios --no-skip-current --cache-builds --configuration Release"
-      sh "./wcarthage.sh archive --output #{framework_binary_path}"
+  desc "Build xcframework for distribution"
+  lane :build_xcframework do |options|
+    if options[:version] == nil
+        raise "Missing release version".red
     end
+
+    Dir.chdir("..") do
+      root = Dir.pwd
+      xcFrameworkPath = "#{project}.xcframework"
+      cryptoSwiftPath = "CryptoSwift.xcframework"
+      configuration = "Release"
+      buildPath = "xcbuild"
+      archiveAllFrameworksPath = allXcFrameworksPath(options[:version])
+      archiveUtilsPath = utilsXcFrameworkPath(options[:version])
+      archiveCryptoPath = cryptoXcFrameworkPath(options[:version])
+
+      if File.exist?(buildPath)
+        sh "rm -rf #{buildPath}"
+      end
+      if File.exist?(xcFrameworkPath)
+        sh "rm -rf #{xcFrameworkPath}"
+      end
+      if File.exist?(archiveAllFrameworksPath)
+        sh "rm #{archiveAllFrameworksPath}"
+      end
+      if File.exist?(archiveUtilsPath)
+        sh "rm #{archiveUtilsPath}"
+      end
+      if File.exist?(archiveCryptoPath)
+        sh "rm #{archiveCryptoPath}"
+      end
+
+      sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+
+      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/").first()
+      sh "xcodebuild -create-xcframework \
+          -framework #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/dSYMs/#{project}.framework.dSYM' \
+          -framework #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/dSYMs/#{project}.framework.dSYM' \
+          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
+          -output #{xcFrameworkPath}"
+
+      sh "zip -r #{archiveAllFrameworksPath} #{xcFrameworkPath} #{cryptoSwiftPath} LICENSE"
+      sh "zip -r #{archiveUtilsPath} #{xcFrameworkPath}"
+      sh "zip -r #{archiveCryptoPath} #{cryptoSwiftPath}"
+      sh "rm -rf #{xcFrameworkPath}"
+    end
+  end
+
+  desc "Upload to a github release"
+  lane :gh_release do |options|
+
+    if options[:version] == nil
+        raise "Missing release version".red
+    end
+
+    if options[:api_token] == nil
+        raise "Missing api token".red
+    end
+
+    if options[:asset1] == nil
+        raise "Missing asset".red
+    end
+
+    if options[:asset2] == nil
+        raise "Missing asset".red
+    end
+
+    if options[:asset3] == nil
+        raise "Missing asset".red
+    end
+
+    isPrerelease = options[:is_prerelease]
+    if isPrerelease == nil
+        isPrerelease = true
+    end
+
+    changelog = options[:changelog]
+    if changelog == nil
+       changelog = "Pre-release"
+    end
+
+    set_github_release(
+      repository_name: repository,
+      api_token: options[:api_token],
+      name: "#{options[:version]}",
+      tag_name: options[:version],
+      description: changelog,
+      is_prerelease: isPrerelease,
+      upload_assets: [options[:asset1], options[:asset2], options[:asset3]]
+    )
   end
 
   desc "Update AppStore and utils version number in project plists"
@@ -231,4 +324,15 @@ platform :ios do
     File.write(readme_path, updated)
   end
 
+  def allXcFrameworksPath(version)
+     return "XCFrameworks-#{version}.zip"
+  end
+
+  def utilsXcFrameworkPath(version)
+     return "Data4LifeSDKUtils-xcframework-#{version}.zip"
+  end
+
+  def cryptoXcFrameworkPath(version)
+     return "Cryptoswift-xcframework-#{version}.zip"
+  end
 end
