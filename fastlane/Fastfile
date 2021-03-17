@@ -12,9 +12,6 @@ device = "iPhone 11 (14.0)"
 platform :ios do
   desc "Run unit tests and upload code coverage"
   lane :test do
-    Dir.chdir("..") do
-       sh "./wcarthage.sh bootstrap --platform ios --cache-builds"
-    end
     scan(
       project: "Data4LifeSDKUtils.xcodeproj",
       scheme: "Data4LifeSDKUtils",
@@ -22,7 +19,6 @@ platform :ios do
       devices: device,
       clean: true
     )
-
   end
 
   desc "Package and release framework"
