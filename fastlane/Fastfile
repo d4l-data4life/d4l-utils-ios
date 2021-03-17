@@ -19,6 +19,8 @@ platform :ios do
       devices: device,
       clean: true
     )
+
+    sh("pod spec lint")
   end
 
   desc "Package and release framework"
