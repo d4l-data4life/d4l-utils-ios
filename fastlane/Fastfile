@@ -20,7 +20,9 @@ platform :ios do
       clean: true
     )
 
-    sh("pod spec lint")
+    Dir.chdir("..") do
+      sh("pod spec lint")
+    end
   end
 
   desc "Package and release framework"
