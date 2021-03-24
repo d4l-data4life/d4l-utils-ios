@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Data4LifeSDKUtils"
-  s.version          = "0.3.0"
+  s.version          = "0.3.1"
   s.summary          = "Generic utilities functions used in the D4L SDK libraries"
   s.homepage         = "https://github.com/d4l-data4life/d4l-utils-ios.git"
   s.license          = 'Private License'

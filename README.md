@@ -1,7 +1,7 @@
 # d4l-util-ios
 Utilities library for iOS SDK projects
 
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.3.0-blue.svg)](https://github.com/CocoaPods/CocoaPods) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.3.1-blue.svg)](https://github.com/CocoaPods/CocoaPods) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Usage
 ### Requirements
