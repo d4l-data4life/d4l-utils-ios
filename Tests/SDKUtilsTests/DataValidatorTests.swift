@@ -14,13 +14,13 @@
 //  contact D4L by email to help@data4life.care.
 
 import XCTest
-@testable import Data4LifeSDKUtils
+import Data4LifeSDKUtils
 
 class DataValidatorTests: XCTestCase {
 
     private var bundle: Bundle = Bundle.current
-    private let dataValidatorWithLimit = DataValidator(supportedMimeTypes: [.jpeg], upperFilesizeLimitInMegabytes: 2)
-    private let dataValidatorWithoutLimit = DataValidator(supportedMimeTypes: [.jpeg], upperFilesizeLimitInMegabytes: nil)
+    private let dataValidatorWithLimit = DataValidator(supportedMimeTypes: [.jpeg], upperFilesizeLimitInBytes: 2 * 1024 * 1024)
+    private let dataValidatorWithoutLimit = DataValidator(supportedMimeTypes: [.jpeg], upperFilesizeLimitInBytes: nil)
 
     func testSupportedMimeType() {
         let data = bundle.data(forResource: "sample", withExtension: "jpg")!
@@ -40,8 +40,8 @@ class DataValidatorTests: XCTestCase {
 
     func testCorrectlySizedData() {
         let data = Data(count: 1 * 1024 * 1024)
-        XCTAssertNoThrow(try dataValidatorWithLimit.validateSize(of: data), "It should not throw an error")
         XCTAssertNoThrow(try dataValidatorWithoutLimit.validateSize(of: data), "It should not throw an error")
+        XCTAssertNoThrow(try dataValidatorWithLimit.validateSize(of: data), "It should not throw an error")
     }
 
     func testOversizedData() {

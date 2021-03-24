@@ -14,7 +14,7 @@
 //  contact D4L by email to help@data4life.care.
 
 import XCTest
-@testable import Data4LifeSDKUtils
+import Data4LifeSDKUtils
 
 class DataCryptographyTests: XCTestCase {
 

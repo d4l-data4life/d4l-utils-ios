@@ -13,9 +13,9 @@
 //  applications and/or if you’d like to contribute to the development of the SDK, please
 //  contact D4L by email to help@data4life.care.
 
-import class CryptoSwift.SHA1
+import CryptoSwift
 import Foundation
-import enum CryptoKit.Insecure
+import CryptoKit
 
 extension Data {
     public var sha1Hash: String {

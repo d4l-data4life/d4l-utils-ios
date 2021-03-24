@@ -1,0 +1,24 @@
+name: D4L Utils CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: [self-hosted, macos]
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+    - name: Display runner context
+      run: hostname -s
+    - name: test
+      run: bundle exec fastlane test
