@@ -4,8 +4,8 @@ project = "Data4LifeSDKUtils"
 repository = "d4l-data4life/d4l-utils-ios.git"
 framework_binary_path = "build/" + project + ".framework.zip"
 podspec_path = '../Data4LifeSDKUtils.podspec'
-private_podspec_repo_name = 'd4l-data4life'
-private_podspect_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
+podspecs_repo_name = 'd4l-data4life'
+podspecs_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
 device = "iPhone 11 (14.0)"
 
 platform :ios do
@@ -170,11 +170,11 @@ platform :ios do
     # pod_push fastlane action does not support private switch
     # pod_push(path: "./Data4LifeFHIR.podspec", repo: "gesundheitscloud", allow_warnings: true)
     repo_list = sh "bundle exec pod repo list"
-    if !repo_list.include? private_podspec_repo_name
-     sh "bundle exec pod repo add #{private_podspec_repo_name} #{private_podspect_repo_url}"
+    if !repo_list.include? podspecs_repo_name
+     sh "bundle exec pod repo add #{podspecs_repo_name} #{podspecs_repo_url}"
     end
 
-    sh "bundle exec pod repo push #{private_podspec_repo_name} #{podspec_path} --private --allow-warnings"
+    sh "bundle exec pod repo push #{podspecs_repo_name} #{podspec_path} --allow-warnings"
   end
 
   desc "Lint sources using swiftlint and check the license headers"
