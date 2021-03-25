@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Discontinued Carthage in favor of Swift PM as decentralized
 - Adds separate Cryptoswift xcframework
 
+## [0.3.1] - 2020-03-24
+### Changed
+- Pod spec updated to public repo
+
 ## [0.3.0] - 2020-12-01
 ### Changed
 - Open sourced
