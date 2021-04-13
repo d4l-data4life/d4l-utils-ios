@@ -111,7 +111,7 @@ platform :ios do
         asset1: archiveUtilsPath
       )
 
-      update_podspec_version
+      update_podspec_version(version: version)
       push_podspec
 
     else
