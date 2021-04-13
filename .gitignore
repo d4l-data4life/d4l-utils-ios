@@ -23,9 +23,7 @@ DerivedData/
 vendor
 .swiftpm
 xcbuild/
-Cryptoswift-xcframework*
 Data4LifeSDKUtils-xcframework*
-XCFrameworks-*
 Carthage
 build
 

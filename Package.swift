@@ -16,7 +16,7 @@ let package = Package(
         .binaryTarget(
             name: "Data4LifeSDKUtils",
             url: "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/0.5.0/Data4LifeSDKUtils-xcframework-0.5.0.zip",
-            checksum: "786f32269ae748db0db29fd7a951a90a16b5b6be60b9a0e7fbc8e4e4fe926897"
+            checksum: "a2412bcc94075f61596c59252690813ed2900e15a79aae72830f53c3e0fe3d87"
         ),
         .testTarget(
             name: "Data4LifeSDKUtilsTests",
