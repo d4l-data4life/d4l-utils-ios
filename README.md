@@ -1,7 +1,7 @@
 # d4l-util-ios
 Utilities library for iOS SDK projects
 
-[![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.4.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
+[![CocoaPods Compatible](https://img.shields.io/badge/pod-v0.5.0-blue.svg)](https://github.com/CocoaPods/CocoaPods)
 [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg?style=flat&colorA=28a745&&colorB=4E4E4E)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/badge/license-PRIVATE-blue.svg)](https://github.com/d4l-data4life/d4l-utils-ios/blob/main/LICENSE)
 

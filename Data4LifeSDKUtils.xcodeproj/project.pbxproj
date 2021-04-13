@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,7 +23,6 @@
 		3659B89923D60C4D009970DA /* DataValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3659B89723D60C0E009970DA /* DataValidatorTests.swift */; };
 		3659BC9823D84B05009970DA /* Data+Cryptography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3659BC9723D84B05009970DA /* Data+Cryptography.swift */; };
 		3659BC9A23D84BCF009970DA /* DataCryptographyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3659BC9923D84BCF009970DA /* DataCryptographyTests.swift */; };
-		36B82DA025FBAC6700F126A2 /* CryptoSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B82D9F25FBAC6700F126A2 /* CryptoSwift.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36B82DA025FBAC6700F126A2 /* CryptoSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,7 +462,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Sources/SDKUtils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -472,7 +470,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.SDKUtils;
 				PRODUCT_NAME = Data4LifeSDKUtils;
 				SKIP_INSTALL = YES;
@@ -500,7 +498,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Sources/SDKUtils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -508,7 +506,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.4.0;
+				MARKETING_VERSION = 0.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.SDKUtils;
 				PRODUCT_NAME = Data4LifeSDKUtils;
 				SKIP_INSTALL = YES;
