@@ -13,18 +13,13 @@
 //  applications and/or if you’d like to contribute to the development of the SDK, please
 //  contact D4L by email to help@data4life.care.
 
-import CryptoSwift
 import Foundation
 import CryptoKit
 
 extension Data {
     public var sha1Hash: String {
-        if #available(iOS 13.0, macOS 10.15, *) {
-            let digest = Insecure.SHA1.hash(data: self)
-            let digestData = Data(digest)
-            return digestData.base64EncodedString()
-        } else {
-            return self.sha1().base64EncodedString()
-        }
+        let digest = Insecure.SHA1.hash(data: self)
+        let digestData = Data(digest)
+        return digestData.base64EncodedString()
     }
 }
