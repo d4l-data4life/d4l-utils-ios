@@ -21,7 +21,7 @@ SDK is handled by [Fastlane](https://fastlane.tools/) and all of the available f
 To install with [CocoaPods](https://cocoapods.org/) add the following line to the podfile.
 
 ```ruby
-pod 'Data4LifeSDKUtils', '~> 0.4.0'
+pod 'Data4LifeSDKUtils', '~> 0.5.0'
 ```
 
 #### Swift Package Manager
