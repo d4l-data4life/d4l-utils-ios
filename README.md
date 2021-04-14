@@ -29,7 +29,7 @@ pod 'Data4LifeSDKUtils', '~> 0.4.0'
 To install with [Swift Package Manager](https://swift.org/package-manager/) add this package as a dependency in `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.4.0"))
+.package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.5.0"))
 ```
 
 ## Building
