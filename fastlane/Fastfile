@@ -111,7 +111,7 @@ platform :ios do
         asset1: archiveUtilsPath
       )
 
-      update_podspec_version
+      update_podspec_version(version: version)
       push_podspec
 
     else
@@ -154,7 +154,8 @@ platform :ios do
           -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
           -output #{xcFrameworkPath}"
 
-      sh "zip -r #{archiveUtilsPath} #{xcFrameworkPath} LICENSE"
+      sh "cp LICENSE #{xcFrameworkPath}"
+      sh "zip -r #{archiveUtilsPath} #{xcFrameworkPath}"
       sh "rm -rf #{xcFrameworkPath}"
     end
   end

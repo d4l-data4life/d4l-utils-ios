@@ -55,7 +55,6 @@
 		3659B89723D60C0E009970DA /* DataValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataValidatorTests.swift; sourceTree = "<group>"; };
 		3659BC9723D84B05009970DA /* Data+Cryptography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Cryptography.swift"; sourceTree = "<group>"; };
 		3659BC9923D84BCF009970DA /* DataCryptographyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCryptographyTests.swift; sourceTree = "<group>"; };
-		36B82D9F25FBAC6700F126A2 /* CryptoSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = CryptoSwift.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +153,6 @@
 		3659BC8D23D848AE009970DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				36B82D9F25FBAC6700F126A2 /* CryptoSwift.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

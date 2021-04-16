@@ -8,7 +8,7 @@ Utilities library for iOS SDK projects
 ## Usage
 ### Requirements
 * Xcode 12.0+
-* iOS 12.0+
+* iOS 13.0+
 * Swift 5.3+
 
 ## Management
@@ -21,7 +21,7 @@ SDK is handled by [Fastlane](https://fastlane.tools/) and all of the available f
 To install with [CocoaPods](https://cocoapods.org/) add the following line to the podfile.
 
 ```ruby
-pod 'Data4LifeSDKUtils', '~> 0.4.0'
+pod 'Data4LifeSDKUtils', '~> 0.5.0'
 ```
 
 #### Swift Package Manager
@@ -29,7 +29,7 @@ pod 'Data4LifeSDKUtils', '~> 0.4.0'
 To install with [Swift Package Manager](https://swift.org/package-manager/) add this package as a dependency in `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.4.0"))
+.package(url: "https://github.com/d4l-data4life/d4l-utils-ios.git", .upToNextMinor(from: "0.5.0"))
 ```
 
 ## Building
