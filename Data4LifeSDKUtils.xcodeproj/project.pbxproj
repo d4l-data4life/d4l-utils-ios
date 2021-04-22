@@ -468,7 +468,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.SDKUtils;
 				PRODUCT_NAME = Data4LifeSDKUtils;
 				SKIP_INSTALL = YES;
@@ -504,7 +504,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 0.5.0;
+				MARKETING_VERSION = 0.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.gesundheitscloud.SDKUtils;
 				PRODUCT_NAME = Data4LifeSDKUtils;
 				SKIP_INSTALL = YES;
