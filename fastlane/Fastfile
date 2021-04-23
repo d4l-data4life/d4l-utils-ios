@@ -144,14 +144,9 @@ platform :ios do
 
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
       sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-
-      symbolMapUUIDFile = Dir.children("./#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/").first()
       sh "xcodebuild -create-xcframework \
           -framework #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/dSYMs/#{project}.framework.dSYM' \
           -framework #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/dSYMs/#{project}.framework.dSYM' \
-          -debug-symbols '#{root}/#{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/BCSymbolMaps/#{symbolMapUUIDFile}' \
           -output #{xcFrameworkPath}"
 
       sh "cp LICENSE #{xcFrameworkPath}"

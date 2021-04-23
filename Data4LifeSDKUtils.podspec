@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Data4LifeSDKUtils"
-  s.version          = "0.5.0"
+  s.version          = "0.6.0"
   s.summary          = "Generic utilities functions used in the D4L SDK libraries"
   s.homepage         = "https://github.com/d4l-data4life/d4l-utils-ios.git"
   s.license          = { :type => 'LICENSE', :file => 'Data4LifeSDKUtils.xcframework/LICENSE' }
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.requires_arc     = true
   s.cocoapods_version = '>= 1.10.0'
 
-  s.preserve_paths      = 'Data4LifeSDKUtils.xcframework', 'Data4LifeSDKUtils.dSYMs/Data4LifeSDKUtils.framework.ios-arm64.dSYM', 'Data4LifeSDKUtils.dSYMs/Data4LifeSDKUtils.framework.ios-arm64_x86_64-simulator.dSYM'
+  s.preserve_paths      = 'Data4LifeSDKUtils.xcframework'
   s.vendored_frameworks = 'Data4LifeSDKUtils.xcframework'
 
 end
