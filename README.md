@@ -7,7 +7,7 @@ Utilities library for iOS SDK projects
 
 ## Usage
 ### Requirements
-* Xcode 12.0+
+* Xcode 12.4+
 * iOS 13.0+
 * Swift 5.3+
 
