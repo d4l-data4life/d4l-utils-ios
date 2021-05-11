@@ -10,8 +10,8 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: macos-11.0
+  pr-test:
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
     - run: |
