@@ -28,23 +28,3 @@ jobs:
           bundle install --jobs 4 --retry 3
     - name: test
       run: bundle exec fastlane test
-  pr-xcframework-test:
-    runs-on: macos-latest
-    env:
-      FRAMEWORK_VERSION: 0.6.0
-    steps:
-    - name: Display runner context
-      run: hostname -s
-    - uses: actions/checkout@v2
-    - name: Cache ruby gems
-      uses: actions/cache@v2
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gem-
-    - run: |
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-    - name: test
-      run: fastlane ios build_xcframework version:"$FIRST_NAME"
