@@ -1,0 +1,32 @@
+name: D4L Utils CI (PR testing)
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Display runner context
+      run: hostname -s
+    - uses: actions/checkout@v2
+    - name: Cache ruby gems
+      uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+    - name: Reset iOS simulators (Required to avoid tests failing problem)
+      run: xcrun simctl erase all
+    - name: test
+      run: bundle exec fastlane test

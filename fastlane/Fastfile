@@ -142,8 +142,8 @@ platform :ios do
         sh "rm #{archiveUtilsPath}"
       end
 
-      sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
-      sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES"
+      sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive -destination 'generic/platform=iOS Simulator' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES ENABLE_TESTABILITY=YES SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO"
+      sh "xcodebuild archive -scheme #{scheme} -configuration #{configuration} -archivePath #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive -destination 'generic/platform=iOS' SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES SWIFT_SERIALIZE_DEBUGGING_OPTIONS=NO"
       sh "xcodebuild -create-xcframework \
           -framework #{buildPath}/#{configuration}/#{project}-iphonesimulator.xcarchive/Products/Library/Frameworks/#{project}.framework \
           -framework #{buildPath}/#{configuration}/#{project}-iphoneos.xcarchive/Products/Library/Frameworks/#{project}.framework \
