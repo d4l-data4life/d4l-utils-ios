@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  pr-test:
+  build:
     runs-on: macos-latest
     steps:
     - name: Display runner context
