@@ -1,4 +1,4 @@
-name: D4L Utils CI
+name: D4L Utils CI (PR testing)
 
 on:
   push:
@@ -9,10 +9,9 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
-    runs-on: [self-hosted, macos]
+    runs-on: macos-11.0
     steps:
     - uses: actions/checkout@v2
     - run: |
