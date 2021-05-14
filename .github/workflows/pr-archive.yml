@@ -1,0 +1,39 @@
+name: D4L Utils CI (PR archiving)
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  archive:
+    runs-on: macos-latest
+    steps:
+    - name: Display runner context
+      run: hostname -s
+    - uses: actions/checkout@v2
+    - name: Cache ruby gems
+      uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+    - name: Installs Development certificate
+      uses: apple-actions/import-codesign-certs@v1
+      with:
+        p12-file-base64: ${{ secrets.DEVELOPMENT_CERTIFICATE_P12 }}
+        p12-password: ${{ secrets.DEVELOPMENT_CERTIFICATE_PASSWORD }}
+    - name: Reset iOS simulators (Required to avoid tests failing problem)
+      run: xcrun simctl erase all
+    - name: Test archive
+      env:
+        VERSION: 0.0.0
+      run: bundle exec fastlane ios build_xcframework version:"$VERSION"
