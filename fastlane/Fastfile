@@ -17,6 +17,7 @@ platform :ios do
       scheme: "Data4LifeSDKUtils",
       derived_data_path: "build/DerivedData",
       devices: device,
+      code_coverage: true,
       clean: true
     )
 
