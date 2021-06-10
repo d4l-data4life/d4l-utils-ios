@@ -22,8 +22,10 @@ platform :ios do
     )
 
     Dir.chdir("..") do
-      sh("pod spec lint")
+      sh("./generate-cov-report.sh build/DerivedData/Logs/Test/*.xcresult/ > sonarqube-generic-coverage.xml")
     end
+
+
   end
 
   desc "Package and release framework"

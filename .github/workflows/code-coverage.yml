@@ -1,0 +1,41 @@
+name: Code Coverage
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+jobs:
+  code-coverage:
+    name: Code Coverage
+    runs-on: macos-latest
+    steps:
+      - name: Display runner context
+        run: hostname -s
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Cache ruby gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+      - run: |
+            bundle config path vendor/bundle
+            bundle install --jobs 4 --retry 3
+      - name: Reset iOS simulators (Required to avoid tests failing problem)
+        run: xcrun simctl erase all
+      - name: test
+        run: bundle exec fastlane ios test
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
