@@ -30,29 +30,7 @@ jobs:
       run: |
            xcrun llvm-profdata merge build/DerivedData/Build/ProfileData/*/*.profdata -output merged.profdata
            xcrun --run llvm-cov show build/DerivedData/Build/Products/Debug-iphonesimulator/Data4LifeSDKUtils.framework/Data4LifeSDKUtils --instr-profile merged.profdata >> sonarqube-swift-coverage
-    - name: Upload coverage
-      uses: actions/upload-artifact@v2
-      with:
-        name: coverage-report
-        path: sonarqube-swift-coverage
-
-  code-coverage:
-    name: Code Coverage Scan
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Display runner context
-        run: hostname -s
-      - name: Install sonar scanner
-        run: brew install sonar-scanner
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Download coverage
-        uses: actions/download-artifact@v2
-        with:
-          name: coverage-report
-      - name: SonarCloud Scan
+    - name: SonarCloud Scan
         run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.pullrequest.base=main -Dsonar.pullrequest.branch=$GITHUB_HEAD_REF -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} -Dsonar.pullrequest.provider=GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
