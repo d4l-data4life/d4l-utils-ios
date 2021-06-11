@@ -26,6 +26,8 @@ jobs:
       run: xcrun simctl erase all
     - name: test
       run: bundle exec fastlane test
+    - name: Install sonar scanner
+      run: brew install sonar-scanner
     - name: Create sonarqube report
       run: |
            xcrun llvm-profdata merge build/DerivedData/Build/ProfileData/*/*.profdata -output merged.profdata
