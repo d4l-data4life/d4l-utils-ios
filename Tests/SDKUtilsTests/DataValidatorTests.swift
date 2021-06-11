@@ -21,6 +21,7 @@ class DataValidatorTests: XCTestCase {
     private var bundle: Bundle = Bundle.current
     private let dataValidatorWithLimit = DataValidator(supportedMimeTypes: [.jpeg], upperFilesizeLimitInBytes: 2 * 1024 * 1024)
     private let dataValidatorWithoutLimit = DataValidator(supportedMimeTypes: [.jpeg], upperFilesizeLimitInBytes: nil)
+    private let d4lDataValidator = DataValidator.d4lSDK
 
     func testSupportedMimeType() {
         let data = bundle.data(forResource: "sample", withExtension: "jpg")!
@@ -54,5 +55,15 @@ class DataValidatorTests: XCTestCase {
             }
             XCTAssertEqual(error, .invalidSize)
         })
+    }
+
+    func testD4lDataValidatorSize() {
+        let sizedData = Data(count: 1 * 1024 * 1024)
+        XCTAssertNoThrow(try d4lDataValidator.validateSize(of: sizedData), "It should not throw an error")
+    }
+
+    func testD4lDataValidatorType() {
+        let data = bundle.data(forResource: "sample", withExtension: "jpg")!
+        XCTAssertNoThrow(try d4lDataValidator.validateMimeType(of: data), "It should not throw an error")
     }
 }
