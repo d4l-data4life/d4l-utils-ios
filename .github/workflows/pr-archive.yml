@@ -29,8 +29,8 @@ jobs:
     - name: Installs Development certificate
       uses: apple-actions/import-codesign-certs@v1
       with:
-        p12-file-base64: ${{ secrets.DEVELOPMENT_CERTIFICATE_P12 }}
-        p12-password: ${{ secrets.DEVELOPMENT_CERTIFICATE_PASSWORD }}
+        p12-file-base64: ${{ secrets.SDK_IOS_DEVELOPMENT_CERTIFICATE_P12 }}
+        p12-password: ${{ secrets.SDK_IOS_DEVELOPMENT_CERTIFICATE_PASSWORD }}
     - name: Reset iOS simulators (Required to avoid tests failing problem)
       run: xcrun simctl erase all
     - name: Test archive

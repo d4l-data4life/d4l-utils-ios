@@ -21,15 +21,16 @@ class DataValidatorTests: XCTestCase {
     private var bundle: Bundle = Bundle.current
     private let dataValidatorWithLimit = DataValidator(supportedMimeTypes: [.jpeg], upperFilesizeLimitInBytes: 2 * 1024 * 1024)
     private let dataValidatorWithoutLimit = DataValidator(supportedMimeTypes: [.jpeg], upperFilesizeLimitInBytes: nil)
+    private let d4lDataValidator = DataValidator.d4lSDK
 
     func testSupportedMimeType() {
         let data = bundle.data(forResource: "sample", withExtension: "jpg")!
-        XCTAssertNoThrow(try dataValidatorWithLimit.validateMimeType(of: data), "It should not throw an error")
+        XCTAssertNoThrow(try dataValidatorWithLimit.validateMimeType(of: data), "It should not throw Mime type error")
     }
 
     func testUnsupportedMimeType() {
         let data = bundle.data(forResource: "sample", withExtension: "png")!
-        XCTAssertThrowsError(try dataValidatorWithLimit.validateMimeType(of: data), "It should throw an error", { error in
+        XCTAssertThrowsError(try dataValidatorWithLimit.validateMimeType(of: data), "It should throw Mime type error", { error in
             guard let error = error as? DataValidationError else {
                 XCTFail("Thrown wrong error")
                 return
@@ -40,19 +41,29 @@ class DataValidatorTests: XCTestCase {
 
     func testCorrectlySizedData() {
         let data = Data(count: 1 * 1024 * 1024)
-        XCTAssertNoThrow(try dataValidatorWithoutLimit.validateSize(of: data), "It should not throw an error")
-        XCTAssertNoThrow(try dataValidatorWithLimit.validateSize(of: data), "It should not throw an error")
+        XCTAssertNoThrow(try dataValidatorWithoutLimit.validateSize(of: data), "It should not throw size error on unlimited")
+        XCTAssertNoThrow(try dataValidatorWithLimit.validateSize(of: data), "It should not throw size error on correct limit")
     }
 
     func testOversizedData() {
         let data = Data(count: 3 * 1024 * 1024)
-        XCTAssertNoThrow(try dataValidatorWithoutLimit.validateSize(of: data), "It should not throw an error")
-        XCTAssertThrowsError(try dataValidatorWithLimit.validateSize(of: data), "It should throw an error", { error in
+        XCTAssertNoThrow(try dataValidatorWithoutLimit.validateSize(of: data), "It should not throw size error on unlimited")
+        XCTAssertThrowsError(try dataValidatorWithLimit.validateSize(of: data), "It should throw size error on overflowed limit", { error in
             guard let error = error as? DataValidationError else {
                 XCTFail("Thrown wrong error")
                 return
             }
             XCTAssertEqual(error, .invalidSize)
         })
+    }
+
+    func testD4lDataValidatorSize() {
+        let sizedData = Data(count: 1 * 1024 * 1024)
+        XCTAssertNoThrow(try d4lDataValidator.validateSize(of: sizedData), "It should not throw size error on d4l")
+    }
+
+    func testD4lDataValidatorType() {
+        let data = bundle.data(forResource: "sample", withExtension: "jpg")!
+        XCTAssertNoThrow(try d4lDataValidator.validateMimeType(of: data), "It should not throw type error on d4l")
     }
 }

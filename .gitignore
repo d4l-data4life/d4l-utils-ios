@@ -26,6 +26,9 @@ xcbuild/
 Data4LifeSDKUtils-xcframework*
 Carthage
 build
+.scannerwork/
+merged.profdata
+sonarqube-swift-coverage
 
 ## Obj-C/Swift specific
 *.hmap

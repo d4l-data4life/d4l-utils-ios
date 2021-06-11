@@ -12,10 +12,16 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    concurrency:
+      group: build-${{ github.head_ref }}
+      cancel-in-progress: true
     steps:
     - name: Display runner context
       run: hostname -s
-    - uses: actions/checkout@v2
+    - name: Check out repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Cache ruby gems
       uses: actions/cache@v2
       with:
@@ -30,3 +36,21 @@ jobs:
       run: xcrun simctl erase all
     - name: test
       run: bundle exec fastlane test
+    - name: Install sonar scanner
+      run: brew install sonar-scanner
+    - name: Create sonarqube report
+      run: |
+           xcrun llvm-profdata merge build/DerivedData/Build/ProfileData/*/*.profdata -output merged.profdata
+           xcrun --run llvm-cov show build/DerivedData/Build/Products/Debug-iphonesimulator/Data4LifeSDKUtils.framework/Data4LifeSDKUtils --instr-profile merged.profdata >> sonarqube-swift-coverage
+    - name: SonarCloud PR Scan
+      if: github.event_name == 'pull_request'
+      run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.pullrequest.base=$GITHUB_BASE_REF -Dsonar.pullrequest.branch=$GITHUB_HEAD_REF -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} -Dsonar.pullrequest.provider=GitHub
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - name: SonarCloud Push Scan
+      if: github.event_name == 'push'
+      run: sonar-scanner -Dsonar.login=$SONAR_TOKEN
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
