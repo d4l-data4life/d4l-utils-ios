@@ -20,7 +20,10 @@ jobs:
       run: hostname -s
     - name: Display environment
       run: echo $GITHUB_BASE_REF $GITHUB_HEAD_REF $GITHUB_HEAD_REF ${GITHUB_BASE_REF##*/} ${GITHUB_HEAD_REF##*/}
-    - uses: actions/checkout@v2
+    - name: Check out repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Cache ruby gems
       uses: actions/cache@v2
       with:
