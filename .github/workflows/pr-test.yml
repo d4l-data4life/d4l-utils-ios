@@ -47,6 +47,8 @@ jobs:
     steps:
       - name: Display runner context
         run: hostname -s
+      - name: Install sonar scanner
+        run: brew install sonar-scanner
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -57,7 +59,7 @@ jobs:
       - name: Show report
         run: less -FX sonarqube-swift-coverage
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        run: sonar-scanner -Dsonar.login=$SONAR_TOKEN
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
