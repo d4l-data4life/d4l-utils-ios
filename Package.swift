@@ -3,8 +3,7 @@
 
 import PackageDescription
 
-let version = "0.6.0"
-let frameworkUrl = "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/\(version)/Data4LifeSDKUtils-xcframework-\(version).zip"
+let frameworkBuilder = FrameworkUrlBuilder(version: "0.6.0")
 
 let package = Package(
     name: "Data4LifeSDKUtils",
@@ -18,7 +17,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "Data4LifeSDKUtils",
-            url: frameworkUrl,
+            url: frameworkBuilder.url,
             checksum: "e4951af015f653f54d66654158765197a729249e75aa6f238397b23efa3213aa"
         ),
         .testTarget(
@@ -43,3 +42,21 @@ let package = Package(
             ]),
     ]
 )
+
+struct FrameworkUrlBuilder {
+    let version: String
+    let frameworkDomain: String = "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/"
+}
+
+extension FrameworkUrlBuilder {
+    var path: String {
+        "\(version)/"
+    }
+    var frameworkArchiveName: String {
+        "Data4LifeSDKUtils-xcframework-\(version).zip"
+    }
+
+    var url: String {
+        "\(frameworkDomain)\(path)\(frameworkArchiveName)"
+    }
+}
