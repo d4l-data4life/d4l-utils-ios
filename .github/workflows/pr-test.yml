@@ -14,6 +14,8 @@ jobs:
     steps:
     - name: Display runner context
       run: hostname -s
+    - name: Display environment
+      run: echo $GITHUB_BASE_REF $GITHUB_HEAD_REF $GITHUB_HEAD_REF ${GITHUB_BASE_REF##*/} ${GITHUB_HEAD_REF##*/}
     - uses: actions/checkout@v2
     - name: Cache ruby gems
       uses: actions/cache@v2
@@ -36,7 +38,7 @@ jobs:
            xcrun llvm-profdata merge build/DerivedData/Build/ProfileData/*/*.profdata -output merged.profdata
            xcrun --run llvm-cov show build/DerivedData/Build/Products/Debug-iphonesimulator/Data4LifeSDKUtils.framework/Data4LifeSDKUtils --instr-profile merged.profdata >> sonarqube-swift-coverage
     - name: SonarCloud Scan
-      run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.pullrequest.base=$GITHUB_BASE_REF -Dsonar.pullrequest.branch=$GITHUB_HEAD_REF -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} -Dsonar.pullrequest.provider=GitHub
+      run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.pullrequest.base=${GITHUB_BASE_REF##*/} -Dsonar.pullrequest.branch=${GITHUB_HEAD_REF##*/} -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} -Dsonar.pullrequest.provider=GitHub
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
