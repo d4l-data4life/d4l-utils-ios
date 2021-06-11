@@ -31,12 +31,14 @@ jobs:
     - name: test
       run: bundle exec fastlane test
     - name: Create sonarqube report
-      run: ./generate-cov-report.sh build/DerivedData/Logs/Test/*.xcresult/ > sonarqube-generic-coverage.xml
+      run: |
+           xcrun llvm-profdata merge build/DerivedData/Build/ProfileData/*/*.profdata -output merged.profdata
+           xcrun --run llvm-cov show build/DerivedData/Build/Products/Debug-iphonesimulator/Data4LifeSDKUtils.framework/Data4LifeSDKUtils --instr-profile merged.profdata >> sonarqube-swift-coverage
     - name: Upload coverage
       uses: actions/upload-artifact@v2
       with:
         name: coverage-report
-        path: sonarqube-generic-coverage.xml
+        path: sonarqube-swift-coverage
 
   code-coverage:
     name: Code Coverage Scan
