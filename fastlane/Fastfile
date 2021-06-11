@@ -20,12 +20,6 @@ platform :ios do
       code_coverage: true,
       clean: true
     )
-
-    Dir.chdir("..") do
-      sh("./generate-cov-report.sh build/DerivedData/Logs/Test/*.xcresult/ > sonarqube-generic-coverage.xml")
-    end
-
-
   end
 
   desc "Package and release framework"
