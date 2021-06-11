@@ -53,8 +53,7 @@ jobs:
         with:
           name: coverage-report
       - name: SonarCloud Scan
-        run: |
-        sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.pullrequest.base=main -Dsonar.pullrequest.branch=$GITHUB_HEAD_REF -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} -D-Dsonar.pullrequest.provider=GitHub 
+        run: sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.pullrequest.base=main -Dsonar.pullrequest.branch=$GITHUB_HEAD_REF -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} -Dsonar.pullrequest.provider=GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
