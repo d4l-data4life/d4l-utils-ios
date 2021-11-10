@@ -7,7 +7,7 @@ framework_binary_path = "build/" + project + ".framework.zip"
 podspec_path = '../Data4LifeSDKUtils.podspec'
 podspecs_repo_name = 'd4l-data4life'
 podspecs_repo_url = 'https://github.com/d4l-data4life/d4l-cocoapods-specs.git'
-device = "iPhone 12"
+device = "iPhone 13"
 
 platform :ios do
   desc "Run unit tests and upload code coverage"
