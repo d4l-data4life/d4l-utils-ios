@@ -1,4 +1,4 @@
-= Data4Life Crypto iOS SDK
+= Data4Life SDK Utils iOS SDK
 :library_version: 0.7.0
 :doctype: article
 :!showtitle:
