@@ -142,7 +142,7 @@ platform :ios do
   desc "Build xcframework for distribution"
   lane :build_utils do |options|
     if options[:version] == nil
-      UI.user_error!("Please add required parameter version (eg. version:\"1.0.0\"")
+      UI.user_error!("Please add required parameter version (eg. version:\"v1.0.0\"")
     end
 
     xcframeworkPath = "#{name}.xcframework"
