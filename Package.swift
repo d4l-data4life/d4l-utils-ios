@@ -16,7 +16,7 @@ let package = Package(
         .binaryTarget(
             name: "Data4LifeSDKUtils",
             url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-utils-ios/Data4LifeSDKUtils-xcframework-v0.7.0.zip",
-            checksum: "91a2d43b886a827b6f1df6775196bef1a394a0a3f2ed1de412338b0604633495"
+            checksum: "fa1b870b10baf4b41f653b90ba6ef8c30f1032ace0b9a7ae50095b8713e36263"
         ),
         .testTarget(
             name: "Data4LifeSDKUtilsTests",
