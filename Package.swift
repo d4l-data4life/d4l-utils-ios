@@ -16,7 +16,8 @@ let package = Package(
         .binaryTarget(
             name: "Data4LifeSDKUtils",
             url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-utils-ios/Data4LifeSDKUtils-xcframework-v0.7.0.zip",
-            checksum: "fa1b870b10baf4b41f653b90ba6ef8c30f1032ace0b9a7ae50095b8713e36263"
+            checksum: "unable to restore state from /Users/alessio.borraccino/Documents/workspace/d4l-utils-ios/.build/workspace-state.json; missingKey("path")
+b3968c70fa703ebe1d1fbdb62c8184a19dac81f6a47b8c1fe5cd3468d0f2db66"
         ),
         .testTarget(
             name: "Data4LifeSDKUtilsTests",
