@@ -21,52 +21,6 @@ or alternatively using `brew install fastlane`
 fastlane ios test
 ```
 Run unit tests and upload code coverage
-### ios release_framework
-```
-fastlane ios release_framework
-```
-Package and release framework
-
-#### Options
-
- * **`version`** (required): The new version of the framework
-
- * **`api_token`** (required): Github API token
-
- * **`allow_dirty_branch`**: Allows the git branch to be dirty before continuing. Defaults to false
-
- * **`remote`**: The name of the git remote. Defaults to `origin`. (`DEPLOY_REMOTE`)
-
- * **`allow_branch`**: The name of the branch to build from. Defaults to `main`. (`DEPLOY_BRANCH`)
-
- * **`skip_git_pull`**: Skips pulling the git remote. Defaults to false
-
- * **`is_prerelease`**: Marks GitHub release as Pre-release. Defaults to false
-### ios build_xcframework
-```
-fastlane ios build_xcframework
-```
-Build xcframework for distribution
-### ios gh_release
-```
-fastlane ios gh_release
-```
-Upload to a github release
-### ios update_plist_versions
-```
-fastlane ios update_plist_versions
-```
-Update AppStore and utils version number in project plists
-### ios update_podspec_version
-```
-fastlane ios update_podspec_version
-```
-Update podspec version
-### ios push_podspec
-```
-fastlane ios push_podspec
-```
-Push new podspec to repo
 ### ios lint
 ```
 fastlane ios lint
@@ -77,14 +31,55 @@ Lint sources using swiftlint and check the license headers
 fastlane ios lint_headers
 ```
 Check license headers
+### ios prepare_release
+```
+fastlane ios prepare_release
+```
+Prepare release
+
+#### Options
+
+ * **`version`** (required): The new version of the framework
+
+ * **`api_token`** (required): Github API token
+### ios prepare_snapshot
+```
+fastlane ios prepare_snapshot
+```
+Prepare snapshot
+### ios build_utils
+```
+fastlane ios build_utils
+```
+Build xcframework for distribution
+### ios build_xcframework
+```
+fastlane ios build_xcframework
+```
+Build any project xcframework
+### ios create_github_draft
+```
+fastlane ios create_github_draft
+```
+Upload to a github release draft
+### ios update_plist_versions
+```
+fastlane ios update_plist_versions
+```
+Update version number in project plists
 ### ios update_readme_versions
 ```
 fastlane ios update_readme_versions
 ```
-Update version numbers in README.md
+Update version numbers in README.adoc
+### ios update_badge
+```
+fastlane ios update_badge
+```
+Update readme badge
 
 ----
 
-This README.md is auto-generated and will be re-generated every time [fastlane](https://fastlane.tools) is run.
+This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 More information about fastlane can be found on [fastlane.tools](https://fastlane.tools).
 The documentation of fastlane can be found on [docs.fastlane.tools](https://docs.fastlane.tools).
