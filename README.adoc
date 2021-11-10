@@ -25,7 +25,7 @@ endif::[]
         <h3>Data4Life Crypto iOS</h3>
     </p>
     <p><!-- PROJECT DESCRIPTION -->
-        Swift framework for handling all of the crypto operation for the Data4Life iOS frameworks.
+        Swift framework for handling all of the utils operation for the Data4Life iOS frameworks.
     </p>
     <p><!-- PROJECT DOCUMENTATION -->
         <a href="README.adoc"><strong>Explore the docs »</strong></a>
