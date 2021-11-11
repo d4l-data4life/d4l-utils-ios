@@ -3,8 +3,6 @@
 
 import PackageDescription
 
-let frameworkBuilder = FrameworkUrlBuilder(version: "0.6.0")
-
 let package = Package(
     name: "Data4LifeSDKUtils",
     platforms: [.iOS(.v13)],
@@ -17,8 +15,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "Data4LifeSDKUtils",
-            url: frameworkBuilder.url,
-            checksum: "e4951af015f653f54d66654158765197a729249e75aa6f238397b23efa3213aa"
+            url: "https://d4l-ios-artifact-repository.s3.eu-central-1.amazonaws.com/d4l-data4life/d4l-utils-ios/Data4LifeSDKUtils-xcframework-v0.7.0.zip",
+            checksum: "b3968c70fa703ebe1d1fbdb62c8184a19dac81f6a47b8c1fe5cd3468d0f2db66"
         ),
         .testTarget(
             name: "Data4LifeSDKUtilsTests",
@@ -26,11 +24,6 @@ let package = Package(
             path: "Tests",
             exclude: [
                 "SDKUtilsTests/Info.plist",
-                "build",
-                "fastlane",
-                "vendor",
-                "Gemfile",
-                "Gemfile.lock"
             ],
             resources: [
                 .copy("SDKUtilsTests/Resources/Data Samples/sample-jfif.jpg"),
@@ -42,21 +35,3 @@ let package = Package(
             ]),
     ]
 )
-
-struct FrameworkUrlBuilder {
-    let version: String
-    let frameworkDomain: String = "https://github.com/d4l-data4life/d4l-utils-ios/releases/download/"
-}
-
-extension FrameworkUrlBuilder {
-    var path: String {
-        "\(version)/"
-    }
-    var frameworkArchiveName: String {
-        "Data4LifeSDKUtils-xcframework-\(version).zip"
-    }
-
-    var url: String {
-        "\(frameworkDomain)\(path)\(frameworkArchiveName)"
-    }
-}

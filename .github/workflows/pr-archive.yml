@@ -35,5 +35,5 @@ jobs:
       run: xcrun simctl erase all
     - name: Test archive
       env:
-        VERSION: 0.0.0
-      run: bundle exec fastlane ios build_xcframework version:"$VERSION"
+        VERSION: v0.0.0
+      run: bundle exec fastlane ios build_utils version:"$VERSION"

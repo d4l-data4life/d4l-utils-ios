@@ -1,0 +1,107 @@
+= Data4Life SDK Utils iOS SDK
+:library_version: 0.7.0
+:doctype: article
+:!showtitle:
+:toc: macro
+:toclevels: 2
+:toc-title:
+:icons: font
+:imagesdir: assets/images
+:link-repository: https://github.com/d4l-data4life/d4l-utils-ios
+ifdef::env-github[]
+:warning-caption: :warning:
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+endif::[]
+
+++++
+<div align="center">
+    <p><!-- PROJECT LOGO -->
+        <a><img src="assets/images/d4l-logo.svg" width="150"/></a>
+    </p>
+    <p><!-- PROJECT TITLE -->
+        <h3>Data4Life Crypto iOS</h3>
+    </p>
+    <p><!-- PROJECT DESCRIPTION -->
+        Swift framework for handling all of the utils operation for the Data4Life iOS frameworks.
+    </p>
+    <p><!-- PROJECT DOCUMENTATION -->
+        <a href="README.adoc"><strong>Explore the docs »</strong></a>
+    </p>
+    <p><!-- PROJECT ISSUES/FEATURES -->
+        <a href="https://github.com/d4l-data4life/d4l-utils-ios/issues">Report Bug</a>
+        ·
+        <a href="https://github.com/d4l-data4life/d4l-utils-ios/issues">Request Feature</a>
+    </p>
+    <p><!-- PROJECT BADGES see badges.adoc how to change them -->
+        <a href="https://github.com/d4l-data4life/d4l-utils-ios/releases">
+            <img src="assets/images/badge-release-latest.svg" alt="Latest version"/>
+        </a>
+        <a href="https://github.com/d4l-data4life/d4l-utils-ios/actions">
+            <img src="https://github.com/d4l-data4life/d4l-utils-ios/actions/workflows/pr-test.yml/badge.svg" alt="Build Status"/>
+        </a>
+        <a>
+            <img src="assets/images/badge-platform-support.svg" alt="Platform"/>
+        </a>
+        <a href="LICENSE">
+            <img src="assets/images/badge-license.svg" alt="License"/>
+        </a>
+    </p>
+</div>
+++++
+
+[discrete]
+=== Table Of Contents
+toc::[]
+
+== About The Project
+
+Swift framework for handling all of the crypto operation for the Data4Life iOS frameworks.
+
+== Installation
+
+=== Swift Package Manager
+
+To install with Swift package manager, select your project’s Swift Packages tab, and add our repository url, either as ssh or https url:
+
+[source, terminal]
+----
+https://github.com/d4l-data4life/d4l-utils-ios.git
+----
+
+OR
+
+[source, terminal]
+----
+git@github.com:d4l-data4life/d4l-utils-ios.git
+----
+
+In the next step, select the latest version, and then import the `Data4LifeSDKUtils` framework in your target.
+
+== Changelog
+
+See link:CHANGELOG.adoc[changelog]
+
+== Versioning
+
+We use http://semver.org/[Semantic Versioning] as a guideline for our versioning.
+
+Releases use this format: `{major}.{minor}.{patch}`
+
+* Breaking changes bump `{major}` and reset `{minor}` & `{patch}`
+* Backward compatible changes bump `{minor}` and reset `{patch}`
+* Bug fixes bump `{patch}`
+
+== Contributing
+
+You want to help or share a proposal? You have a specific problem? Read the following:
+
+* link:CODE-OF-CONDUCT.adoc[Code of conduct] for details on our code of conduct.
+* link:CONTRIBUTING.adoc[Contributing] for details about how to report bugs and propose features.
+* link:DEVELOPING.adoc[Developing] for details about our development process and how to build and test the project.
+
+== Copyright and License
+
+Copyright (c) 2021 D4L data4life gGmbH / All rights reserved. Please refer to our link:LICENSE[License] for further details.
