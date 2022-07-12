@@ -22,10 +22,10 @@ endif::[]
         <a><img src="assets/images/d4l-logo.svg" width="150"/></a>
     </p>
     <p><!-- PROJECT TITLE -->
-        <h3>Data4Life Crypto iOS</h3>
+        <h3>Data4Life Utils iOS</h3>
     </p>
     <p><!-- PROJECT DESCRIPTION -->
-        Swift framework for handling all of the utils operation for the Data4Life iOS frameworks.
+        Swift framework for handling all of the util operations for the Data4Life iOS frameworks.
     </p>
     <p><!-- PROJECT DOCUMENTATION -->
         <a href="README.adoc"><strong>Explore the docs »</strong></a>
@@ -58,7 +58,7 @@ toc::[]
 
 == About The Project
 
-Swift framework for handling all of the crypto operation for the Data4Life iOS frameworks.
+Swift framework for handling all of the util operations for the Data4Life iOS frameworks.
 
 == Installation
 
